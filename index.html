@@ -517,6 +517,114 @@
       .btn-danger-solid{ background:var(--danger); color:#fff; }
       .btn-danger-solid:hover{ background:#93281f; }
 
+      /* ---------- Midnight Indigo theme (landing + header) ---------- */
+      #view-landing{ background:#060d1f; }
+
+      /* Header: dark bar, indigo Get Started pill */
+      .topbar{ background:rgba(6,13,31,.94); border-bottom:1px solid #22305a; color:#fff; }
+      .brand{ color:#fff; }
+      .brand small{ color:#8b96c4; }
+      .topnav a{ color:#c3cbe8; }
+      .topnav a:hover{ background:rgba(100,92,255,.16); color:#fff; }
+      .topbar .btn-white{ background:transparent; color:#fff; border-color:#3a4a7d; }
+      .topbar .btn-white:hover{ background:rgba(100,92,255,.15); }
+      .topbar .btn-cyan{ box-shadow:0 0 18px rgba(100,92,255,.6); }
+      .lang-toggle{ background:#0d1730; border-color:#26335c; }
+      .lang-toggle button{ color:#a7b1d6; }
+      .lang-toggle button[aria-pressed="true"]{ background:var(--indigo); color:#fff; box-shadow:0 0 14px rgba(100,92,255,.55); }
+      .user-chip{ background:#0d1730; border-color:#26335c; }
+      .user-chip span{ color:#fff; }
+
+      /* Hero: dark navy, white bold sans headline, glowing indigo CTA */
+      .hero{
+        background:radial-gradient(900px 480px at 78% 4%, rgba(100,92,255,.20), rgba(100,92,255,0) 62%), #060d1f;
+        color:#fff;
+      }
+      .hero-copy .kicker{ color:#c9d2ff; border-color:rgba(164,157,255,.45); background:rgba(100,92,255,.14); }
+      .hero-copy h1{ font-family:"Sora","Public Sans",sans-serif; font-weight:800; color:#fff; }
+      .hero-copy h1 .glow-word{ color:#8f88ff; text-shadow:0 0 26px rgba(100,92,255,.65); }
+      .hero-tag{ color:#fff; }
+      .hero-sub{ color:#a7b1d6; }
+      .hero-points li{ color:#c9d2f2; }
+      .robot-wrap::before{ background:radial-gradient(circle, rgba(100,92,255,.35), rgba(100,92,255,0) 68%); }
+      .robot-wrap img{ box-shadow:0 30px 70px -20px rgba(0,0,0,.65), 0 0 0 1px rgba(100,92,255,.35), 0 0 44px rgba(100,92,255,.25); }
+
+      /* Launch card: dark panel on the hero */
+      .launch-card{
+        background:#0d1730; color:#eef1ff; border:1px solid #26335c; border-top:5px solid var(--indigo);
+        box-shadow:0 24px 60px -18px rgba(0,0,0,.6), 0 0 34px rgba(100,92,255,.18);
+      }
+      .launch-card h2{ color:#fff; }
+      .launch-card .lc-note{ color:#8b96c4; }
+      .launch-card .field label{ color:#c9d2f2; }
+      .launch-card .field input,.launch-card .field select,.launch-card .field textarea{
+        background:#0a1226; border-color:#2c3a68; color:#fff;
+      }
+
+      /* Landing primary / secondary buttons */
+      #view-landing .btn-navy{
+        background:var(--indigo); color:#fff; border-radius:999px;
+        box-shadow:0 0 20px rgba(100,92,255,.55);
+      }
+      #view-landing .btn-navy:hover{ background:var(--navy-btn-hover); }
+      #view-landing .btn-cyan{ box-shadow:0 0 20px rgba(100,92,255,.55); }
+      #view-landing .btn-white,#view-landing .btn-ghost{
+        background:transparent; color:#fff; border-color:#3a4a7d;
+      }
+      #view-landing .btn-white:hover,#view-landing .btn-ghost:hover{ background:rgba(100,92,255,.15); }
+
+      /* Landing sections: white headings, dark cards */
+      #view-landing .section-head h2{ color:#fff; }
+      #view-landing .section-head p{ color:#a7b1d6; }
+      #view-landing .type-card,#view-landing .step{
+        background:#0d1730; border-color:#26335c; color:#e6eaff; box-shadow:none;
+      }
+      #view-landing .type-card h3,#view-landing .step h3{ color:#fff; }
+      #view-landing .type-card p,#view-landing .type-card ul,#view-landing .step p{ color:#a7b1d6; }
+      #view-landing .type-card .tc-icon{ background:rgba(100,92,255,.14); border-color:#2c3a68; color:#a49dff; }
+      #view-landing .step .step-num{ color:var(--indigo); }
+      #view-landing .tpl-card{ background:#0d1730; border-color:#26335c; color:#e6eaff; }
+      #view-landing .tpl-card:hover{ border-color:var(--indigo); box-shadow:0 0 22px rgba(100,92,255,.3); }
+      #view-landing .tpl-card p{ color:#a7b1d6; }
+      #view-landing .tpl-card .tpl-go{ color:#a49dff; }
+
+      /* Services band: dark, no pastel gradient */
+      .svc-band{ background:#060d1f; }
+      .svc-band .section-head h2{ color:#fff; }
+      .svc-band .section-head p{ color:#a7b1d6; }
+      .svc-shell{ border:1px solid #26335c; box-shadow:0 24px 48px -22px rgba(0,0,0,.65), 0 0 30px rgba(100,92,255,.15); }
+      .svc-tab{ background:#141f3d; color:#dbe2ff; }
+      .svc-tab + .svc-tab{ border-left:1px solid #26335c; }
+      .svc-tab .svc-num{ color:rgba(219,226,255,.55); }
+      .svc-tab .svc-tab-title{ color:rgba(255,255,255,.92); }
+      .svc-tab .svc-tab-sub{ color:rgba(219,226,255,.66); }
+      .svc-tab.active{
+        background:var(--indigo);
+        box-shadow:0 0 26px rgba(100,92,255,.65), inset 0 0 0 1px rgba(255,255,255,.25);
+      }
+      .svc-tab.active .svc-num{ color:rgba(255,255,255,.85); }
+      .svc-tab.active .svc-tab-title{ color:#fff; }
+      .svc-tab.active .svc-tab-sub{ color:rgba(255,255,255,.82); }
+      .svc-tab .svc-progress{ background:#fff; }
+      .svc-panel{ background:#0b1428; color:#dbe2ff; }
+      .svc-panel-body h3{ color:#fff; }
+      .svc-panel-body > p{ color:#a7b1d6; }
+      .svc-panel-body ul{ color:#a7b1d6; }
+      .svc-panel-body ul li svg{ color:#3ecf8e; }
+      .svc-panel .btn-navy{
+        background:var(--indigo); border-radius:999px;
+        box-shadow:0 0 20px rgba(100,92,255,.55);
+      }
+      .svc-panel .btn-navy:hover{ background:var(--navy-btn-hover); }
+
+      /* CTA band + footer */
+      .cta-band-in{
+        background:#0d1730; border:1px solid #2c3a68; color:#fff;
+        box-shadow:0 0 30px rgba(100,92,255,.18);
+      }
+      .cta-band-in h2{ color:#fff; font-family:"Sora","Public Sans",sans-serif; font-weight:700; }
+      footer.site{ background:#050b18; }
+
       /* ---------- Responsive ---------- */
       @media (max-width:1020px){
         .builder-grid{ grid-template-columns:1fr; }
@@ -531,7 +639,7 @@
         .two-types,.steps{ grid-template-columns:1fr; }
         .svc-tabs{ flex-direction:column; }
         .svc-tab{ width:100%; }
-        .svc-tab + .svc-tab{ border-left:0; border-top:1px solid rgba(12,39,65,.14); }
+        .svc-tab + .svc-tab{ border-left:0; border-top:1px solid #26335c; }
         .svc-panel{ padding:22px; }
         .app-wrap{ grid-template-columns:1fr; }
         .side{ position:static; }
