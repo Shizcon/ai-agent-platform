@@ -202,19 +202,49 @@
       .type-card ul{ margin:14px 0 0; padding:0; list-style:none; display:grid; gap:7px; color:var(--ink-2); font-size:.94rem; }
       .type-card ul li{ display:flex; gap:8px; } .type-card ul li svg{ flex:none; margin-top:3px; color:var(--good); }
 
-      .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px; }
-      .svc-card{
-        background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
-        padding:26px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column;
+      /* ---------- Services: Orhan-style tab strip ---------- */
+      .svc-band{ background:linear-gradient(100deg,#FFDCB4 0%,#FED1E3 52%,#CABCFE 100%); }
+      .svc-band .section{ padding-top:56px; padding-bottom:64px; }
+      .svc-band .section-head h2{ color:#0C2741; }
+      .svc-band .section-head p{ color:#41556d; }
+      .svc-shell{
+        margin-top:30px; border-radius:18px 18px 0 0; overflow:hidden;
+        box-shadow:0 24px 48px -22px rgba(12,39,65,.30);
       }
-      .svc-card .svc-icon{
-        width:52px; height:52px; border-radius:14px; display:grid; place-items:center; color:#fff;
+      .svc-tabs{ display:flex; }
+      .svc-tab{
+        flex:1 1 0; min-width:0; position:relative; display:flex; gap:14px; align-items:flex-start;
+        text-align:left; padding:20px 22px 22px; border:0; border-radius:0; box-shadow:none;
+        background:rgba(255,255,255,.22); color:#fff; min-height:0;
       }
-      .svc-card h3{ font-size:1.2rem; margin:16px 0 8px; }
-      .svc-card > p{ color:var(--ink-2); }
-      .svc-card ul{ margin:14px 0 20px; padding:0; list-style:none; display:grid; gap:7px; color:var(--ink-2); font-size:.94rem; }
-      .svc-card ul li{ display:flex; gap:8px; } .svc-card ul li svg{ flex:none; margin-top:3px; color:var(--good); }
-      .svc-card .btn{ margin-top:auto; align-self:flex-start; }
+      .svc-tab + .svc-tab{ border-left:1px solid rgba(12,39,65,.14); }
+      .svc-tab .svc-num{
+        font-family:"Sora",sans-serif; font-weight:700; font-size:.95rem; line-height:1.3;
+        color:rgba(255,255,255,.75); flex:none; padding-top:2px;
+      }
+      .svc-tab .svc-tab-text{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+      .svc-tab .svc-tab-title{
+        font-family:"Sora",sans-serif; font-weight:700; font-size:1.08rem; line-height:1.25;
+        color:rgba(255,255,255,.92);
+      }
+      .svc-tab .svc-tab-sub{ font-size:.88rem; line-height:1.35; color:rgba(255,255,255,.72); }
+      .svc-tab.active{ background:#fff; }
+      .svc-tab.active .svc-num{ color:#645CFF; }
+      .svc-tab.active .svc-tab-title{ color:#0C2741; }
+      .svc-tab.active .svc-tab-sub{ color:#54677c; }
+      .svc-tab .svc-progress{
+        position:absolute; left:0; bottom:0; height:3px; width:0; background:#645CFF;
+      }
+      .svc-tab.active .svc-progress{ animation:svcProg 6s linear forwards; }
+      .svc-tabs.paused .svc-tab.active .svc-progress{ animation:none; width:100%; }
+      @keyframes svcProg{ from{ width:0; } to{ width:100%; } }
+      @media (prefers-reduced-motion: reduce){
+        .svc-tab.active .svc-progress{ animation:none; width:100%; }
+      }
+      .svc-panel{ background:#fff; color:#122334; padding:28px; }
+      .svc-panel-body > p{ color:#3c5064; max-width:46rem; }
+      .svc-panel-body ul{ margin:16px 0 22px; padding:0; list-style:none; display:grid; gap:8px; color:#3c5064; font-size:.96rem; max-width:46rem; }
+      .svc-panel-body ul li{ display:flex; gap:8px; } .svc-panel-body ul li svg{ flex:none; margin-top:3px; color:#12805c; }
 
       .tpl-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); gap:16px; margin-top:28px; }
       .tpl-card{
@@ -516,7 +546,11 @@
         .hero-in{ grid-template-columns:1fr; padding-top:38px; }
         .robot-wrap{ order:2; } .robot-wrap img{ width:min(88%,400px); }
         .launch-card{ grid-template-columns:1fr; align-items:stretch; }
-        .two-types,.steps,.svc-grid{ grid-template-columns:1fr; }
+        .two-types,.steps{ grid-template-columns:1fr; }
+        .svc-tabs{ flex-direction:column; }
+        .svc-tab{ width:100%; }
+        .svc-tab + .svc-tab{ border-left:0; border-top:1px solid rgba(12,39,65,.14); }
+        .svc-panel{ padding:22px; }
         .app-wrap{ grid-template-columns:1fr; }
         .side{ position:static; }
         .side nav{ display:flex; flex-wrap:wrap; }
@@ -601,60 +635,78 @@
         </div>
       </section>
 
-      <section class="section" id="services">
-        <div class="section-head">
-          <h2 data-i18n="svcTitle">Three ways AI goes to work for you</h2>
-          <p data-i18n="svcSub">Pick the job you want off your plate. Each service starts as an agent you build here — trained on your business, tested in a live chat, and live in minutes.</p>
-        </div>
-        <div class="svc-grid">
-          <article class="svc-card">
-            <div class="svc-icon" style="background:#2563a8;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
+      <section class="svc-band" id="services">
+        <div class="section">
+          <div class="section-head">
+            <h2 data-i18n="svcTitle">Three ways AI goes to work for you</h2>
+            <p data-i18n="svcSub">Pick the job you want off your plate. Each service starts as an agent you build here — trained on your business, tested in a live chat, and live in minutes.</p>
+          </div>
+          <div class="svc-shell">
+            <div class="svc-tabs" role="tablist" aria-label="Services">
+              <button type="button" class="svc-tab active" role="tab" id="svcTab-service" aria-selected="true" aria-controls="svcPanel" data-svc-tab="service">
+                <span class="svc-num">01</span>
+                <span class="svc-tab-text">
+                  <span class="svc-tab-title" data-i18n="svcServT">AI for Service</span>
+                  <span class="svc-tab-sub" data-i18n="svcServSub">Customer questions, orders &amp; bookings</span>
+                </span>
+                <span class="svc-progress" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="svc-tab" role="tab" id="svcTab-work" aria-selected="false" aria-controls="svcPanel" data-svc-tab="work">
+                <span class="svc-num">02</span>
+                <span class="svc-tab-text">
+                  <span class="svc-tab-title" data-i18n="svcWorkT">AI for Work</span>
+                  <span class="svc-tab-sub" data-i18n="svcWorkSub">Drafts, summaries &amp; follow-ups</span>
+                </span>
+                <span class="svc-progress" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="svc-tab" role="tab" id="svcTab-process" aria-selected="false" aria-controls="svcPanel" data-svc-tab="process">
+                <span class="svc-num">03</span>
+                <span class="svc-tab-text">
+                  <span class="svc-tab-title" data-i18n="svcProcT">AI for Process</span>
+                  <span class="svc-tab-sub" data-i18n="svcProcSub">Daily routines, done the same way</span>
+                </span>
+                <span class="svc-progress" aria-hidden="true"></span>
+              </button>
             </div>
-            <h3 data-i18n="svcWorkT">AI for Work</h3>
-            <p data-i18n="svcWorkD">An extra pair of hands for your team. The agent drafts replies, sums up long threads, prepares the daily report and chases follow-ups — the small jobs that quietly eat the whole day.</p>
-            <ul>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork1">Drafts emails, messages and documents in your tone</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork2">Summarises meetings, chats and long files in seconds</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork3">Keeps task lists, reminders and follow-ups moving</span></li>
-            </ul>
-            <button class="btn btn-navy" type="button" data-service="work">
-              <span data-i18n="svcBtn">Build this agent</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </article>
-          <article class="svc-card">
-            <div class="svc-icon" style="background:#0e7c86;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
+            <div class="svc-panel" id="svcPanel" role="tabpanel" aria-labelledby="svcTab-service">
+              <div class="svc-panel-body" data-svc-panel="service">
+                <p data-i18n="svcServD">Every customer gets an answer — straight away, in the language they wrote in. The agent handles questions, orders and bookings on your website, WhatsApp and phone line, day and night.</p>
+                <ul>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ1">Replies in English, Urdu or Roman Urdu — matching the customer</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ2">Takes orders and books appointments while you sleep</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ3">No message left waiting — not even at 3 in the morning</span></li>
+                </ul>
+                <button class="btn btn-navy" type="button" data-service="service">
+                  <span data-i18n="svcBtn">Build this agent</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+              </div>
+              <div class="svc-panel-body hidden" data-svc-panel="work">
+                <p data-i18n="svcWorkD">An extra pair of hands for your team. The agent drafts replies, sums up long threads, prepares the daily report and chases follow-ups — the small jobs that quietly eat the whole day.</p>
+                <ul>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork1">Drafts emails, messages and documents in your tone</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork2">Summarises meetings, chats and long files in seconds</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcWork3">Keeps task lists, reminders and follow-ups moving</span></li>
+                </ul>
+                <button class="btn btn-navy" type="button" data-service="work">
+                  <span data-i18n="svcBtn">Build this agent</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+              </div>
+              <div class="svc-panel-body hidden" data-svc-panel="process">
+                <p data-i18n="svcProcD">The same steps, done the same way, every single time. Turn the routine your team repeats daily — collecting details, status updates, payment reminders — into an agent that simply gets on with it.</p>
+                <ul>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc1">Turns repeated steps into one clear instruction list</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc2">Collects details step by step and confirms before finishing</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc3">Fewer mistakes, and no follow-up ever forgotten</span></li>
+                </ul>
+                <button class="btn btn-navy" type="button" data-service="process">
+                  <span data-i18n="svcBtn">Build this agent</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+              </div>
             </div>
-            <h3 data-i18n="svcServT">AI for Service</h3>
-            <p data-i18n="svcServD">Every customer gets an answer — straight away, in the language they wrote in. The agent handles questions, orders and bookings on your website, WhatsApp and phone line, day and night.</p>
-            <ul>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ1">Replies in English, Urdu or Roman Urdu — matching the customer</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ2">Takes orders and books appointments while you sleep</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcServ3">No message left waiting — not even at 3 in the morning</span></li>
-            </ul>
-            <button class="btn btn-navy" type="button" data-service="service">
-              <span data-i18n="svcBtn">Build this agent</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </article>
-          <article class="svc-card">
-            <div class="svc-icon" style="background:#e07b24;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-            </div>
-            <h3 data-i18n="svcProcT">AI for Process</h3>
-            <p data-i18n="svcProcD">The same steps, done the same way, every single time. Turn the routine your team repeats daily — collecting details, status updates, payment reminders — into an agent that simply gets on with it.</p>
-            <ul>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc1">Turns repeated steps into one clear instruction list</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc2">Collects details step by step and confirms before finishing</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="svcProc3">Fewer mistakes, and no follow-up ever forgotten</span></li>
-            </ul>
-            <button class="btn btn-navy" type="button" data-service="process">
-              <span data-i18n="svcBtn">Build this agent</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </article>
+          </div>
         </div>
       </section>
 
@@ -1169,6 +1221,7 @@
         svcProcT:"AI for Process",
         svcProcD:"The same steps, done the same way, every single time. Turn the routine your team repeats daily — collecting details, status updates, payment reminders — into an agent that simply gets on with it.",
         svcProc1:"Turns repeated steps into one clear instruction list", svcProc2:"Collects details step by step and confirms before finishing", svcProc3:"Fewer mistakes, and no follow-up ever forgotten",
+        svcServSub:"Customer questions, orders & bookings", svcWorkSub:"Drafts, summaries & follow-ups", svcProcSub:"Daily routines, done the same way",
         svcBtn:"Build this agent",
         typesTitle:"Two kinds of agents, one platform",
         typesSub:"Pick the agent that fits the job. Both are trained the same way — with your business details and plain-word instructions.",
@@ -1307,6 +1360,7 @@
         svcProcT:"AI for Process",
         svcProcD:"Wohi steps, wohi tareeqa, har dafa. Jo routine aap ki team roz dohrati hai — details ikatthi karna, status updates, payment reminders — use aik agent mein badal dein jo bas kaam kar deta hai.",
         svcProc1:"Dohrane wale steps ko aik saaf instruction list mein badalta hai", svcProc2:"Step by step details leta hai aur khatam karne se pehle confirm karta hai", svcProc3:"Kam ghaltiyan, aur koi follow-up kabhi bhoolta nahi",
+        svcServSub:"Customer ke sawal, orders aur bookings", svcWorkSub:"Drafts, khulase aur follow-ups", svcProcSub:"Roz ke routine kaam, har dafa aik jaise",
         svcBtn:"Ye agent banayein",
         typesTitle:"Do qisam ke agents, aik hi platform",
         typesSub:"Jo agent kaam ke liye theek hai, wo chunein. Dono aik hi tareeqay se train hote hain — aap ke business ki details aur saada alfaaz ki instructions se.",
@@ -2297,6 +2351,33 @@
         if (!state.user){ pendingService = svc; openAuth("signup"); }
         else openBuilder(null, null, svc);
       }));
+      // services tab strip: select, auto-rotate, pause on click
+      const svcOrder = ["service", "work", "process"];
+      const svcTabsEl = document.querySelector(".svc-tabs");
+      let svcIdx = 0, svcTimer = null;
+      function selectSvc(i, pause){
+        svcIdx = i;
+        document.querySelectorAll("[data-svc-tab]").forEach(tab => {
+          const on = tab.getAttribute("data-svc-tab") === svcOrder[i];
+          tab.classList.toggle("active", on);
+          tab.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        document.querySelectorAll("[data-svc-panel]").forEach(p => {
+          p.classList.toggle("hidden", p.getAttribute("data-svc-panel") !== svcOrder[i]);
+        });
+        const panel = $("svcPanel");
+        if (panel) panel.setAttribute("aria-labelledby", "svcTab-" + svcOrder[i]);
+        if (pause){
+          if (svcTabsEl) svcTabsEl.classList.add("paused");
+          if (svcTimer){ clearInterval(svcTimer); svcTimer = null; }
+        }
+      }
+      document.querySelectorAll("[data-svc-tab]").forEach(tab => tab.addEventListener("click", () => {
+        selectSvc(svcOrder.indexOf(tab.getAttribute("data-svc-tab")), true);
+      }));
+      if (svcTabsEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+        svcTimer = setInterval(() => selectSvc((svcIdx + 1) % svcOrder.length, false), 6000);
+      }
       $("launchForm").addEventListener("submit", (e) => {
         e.preventDefault();
         openAuth("signup");
