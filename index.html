@@ -617,6 +617,45 @@
       }
       .svc-panel .btn-navy:hover{ background:var(--navy-btn-hover); }
 
+      /* One agent, all channels */
+      .omni-wrap{ max-width:880px; margin:30px auto 0; }
+      .omni-card{
+        position:relative; overflow:hidden; text-align:center;
+        background:radial-gradient(640px 300px at 50% -10%, rgba(100,92,255,.28), rgba(100,92,255,0) 65%), #0d1730;
+        border:1px solid #2c3a68; border-radius:22px; padding:34px 30px 30px;
+        box-shadow:0 24px 60px -18px rgba(0,0,0,.6), 0 0 38px rgba(100,92,255,.22);
+      }
+      .omni-avatar{
+        width:76px; height:76px; margin:0 auto; border-radius:22px; display:grid; place-items:center;
+        background:var(--indigo); color:#fff; border:1px solid rgba(255,255,255,.35);
+        box-shadow:0 0 34px rgba(100,92,255,.75);
+      }
+      .omni-card h3{ color:#fff; font-size:1.45rem; margin:18px 0 6px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+      .omni-card .omni-sub{ color:#a7b1d6; max-width:32rem; margin:0 auto; font-size:.97rem; }
+      .omni-hub-line{ width:2px; height:26px; margin:20px auto 0; background:linear-gradient(180deg, rgba(100,92,255,.9), rgba(100,92,255,.15)); }
+      .omni-channels{ display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:10px; margin-top:14px; text-align:left; }
+      .omni-chip{
+        display:flex; align-items:center; gap:11px; background:#0a1226;
+        border:1px solid #26335c; border-radius:12px; padding:12px 13px; min-width:0;
+      }
+      .omni-chip-icon{ width:38px; height:38px; border-radius:10px; flex:none; display:grid; place-items:center; color:#fff; }
+      .omni-chip strong{ display:block; font-family:"Sora",sans-serif; font-size:.92rem; color:#fff; line-height:1.25; }
+      .omni-chip .omni-conn{ display:flex; align-items:center; gap:6px; font-size:.78rem; color:#8b96c4; margin-top:2px; }
+      .omni-chip .omni-conn::before{ content:""; width:7px; height:7px; border-radius:50%; background:#3ecf8e; flex:none; box-shadow:0 0 8px rgba(62,207,142,.8); }
+      .omni-note{ color:#c9d2f2; margin:22px auto 0; max-width:38rem; font-size:.96rem; }
+      .omni-count{
+        display:inline-flex; margin-top:16px; font-weight:700; font-size:.82rem; letter-spacing:.04em;
+        color:#c9d2ff; border:1px solid rgba(164,157,255,.45); background:rgba(100,92,255,.14);
+        border-radius:999px; padding:6px 15px;
+      }
+      @media (max-width:560px){
+        .omni-card{ padding:26px 16px 24px; }
+        .omni-channels{ grid-template-columns:1fr 1fr; }
+      }
+      @media (max-width:380px){
+        .omni-channels{ grid-template-columns:1fr; }
+      }
+
       /* CTA band + footer */
       .cta-band-in{
         background:#0d1730; border:1px solid #2c3a68; color:#fff;
@@ -832,6 +871,55 @@
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="typeCall2">Books appointments and confirms on the call</span></li>
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="typeCall3">Try it here as a live call simulation</span></li>
             </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="channels">
+        <div class="section-head">
+          <h2 data-i18n="omniTitle">One agent, all channels</h2>
+          <p data-i18n="omniSub">You don't need a different bot for every app. Train one agent once — it answers everywhere your customers already are, with the same knowledge, tone and memory.</p>
+        </div>
+        <div class="omni-wrap">
+          <article class="omni-card">
+            <div class="omni-avatar" aria-hidden="true">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1" fill="currentColor"/><circle cx="9" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.1" fill="currentColor" stroke="none"/><path d="M9.5 16.2c.7.5 1.6.8 2.5.8s1.8-.3 2.5-.8"/></svg>
+            </div>
+            <h3><span data-i18n="omniAgent">Your one agent</span><span class="pill pill-live" data-i18n="statusLive">Live</span></h3>
+            <p class="omni-sub" data-i18n="omniAgentSub">Trained once on your business — live on every channel below.</p>
+            <div class="omni-hub-line" aria-hidden="true"></div>
+            <div class="omni-channels">
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#645CFF;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <span><strong data-i18n="omniChPhone">Phone calls</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#12805c;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                <span><strong data-i18n="omniChWhatsapp">WhatsApp</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#c2456d;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span>
+                <span><strong data-i18n="omniChInstagram">Instagram</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#111827;border:1px solid #3a4a7d;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+                <span><strong data-i18n="omniChTiktok">TikTok</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#2563a8;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg></span>
+                <span><strong data-i18n="omniChWebsite">Website chat</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#2f6fd0;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M15.5 3H13a4 4 0 0 0-4 4v2.5H6.5v3.5H9v8h3.6v-8h2.7l.5-3.5h-3.2V7.2c0-.5.4-.9.9-.9h2V3z"/></svg></span>
+                <span><strong data-i18n="omniChFacebook">Facebook</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+              <div class="omni-chip">
+                <span class="omni-chip-icon" style="background:#e07b24;" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                <span><strong data-i18n="omniChEmail">Email</strong><span class="omni-conn" data-i18n="omniConnected">Connected</span></span>
+              </div>
+            </div>
+            <p class="omni-note" data-i18n="omniNote">One brain, one memory: a customer can start on TikTok, ask again on WhatsApp and finish on a phone call — the agent remembers the whole conversation.</p>
+            <span class="omni-count" data-i18n="omniCount">7 channels · 1 agent · 0 missed messages</span>
           </article>
         </div>
       </section>
@@ -1324,6 +1412,14 @@
         typeCallTitle:"AI Call Agent",
         typeCallDesc:"A voice agent that picks up the phone, talks to callers in a natural tone, books appointments, takes orders and answers the questions your team repeats all day.",
         typeCall1:"Friendly, professional, funny or formal voice tone", typeCall2:"Books appointments and confirms on the call", typeCall3:"Try it here as a live call simulation",
+        omniTitle:"One agent, all channels",
+        omniSub:"You don't need a different bot for every app. Train one agent once — it answers everywhere your customers already are, with the same knowledge, tone and memory.",
+        omniAgent:"Your one agent",
+        omniAgentSub:"Trained once on your business — live on every channel below.",
+        omniConnected:"Connected",
+        omniChPhone:"Phone calls", omniChWhatsapp:"WhatsApp", omniChInstagram:"Instagram", omniChTiktok:"TikTok", omniChWebsite:"Website chat", omniChFacebook:"Facebook", omniChEmail:"Email",
+        omniNote:"One brain, one memory: a customer can start on TikTok, ask again on WhatsApp and finish on a phone call — the agent remembers the whole conversation.",
+        omniCount:"7 channels · 1 agent · 0 missed messages",
         tplTitle:"Start from a template",
         tplSub:"Five ready-made agents with instructions already written. Pick one, change the business details to yours, and go live.",
         howTitle:"Live in three steps",
@@ -1463,6 +1559,14 @@
         typeCallTitle:"AI Call Agent",
         typeCallDesc:"Aik voice agent jo phone uthata hai, callers se natural tone mein baat karta hai, appointments book karta hai, orders leta hai aur wo sawal jawab deta hai jo aap ki team saara din dohrati hai.",
         typeCall1:"Friendly, professional, funny ya formal voice tone", typeCall2:"Call par appointment book karke confirm karta hai", typeCall3:"Yahan live call simulation mein try karein",
+        omniTitle:"Aik agent, saare channels",
+        omniSub:"Har app ke liye alag bot ki zaroorat nahi. Aik agent ko aik dafa train karein — ye har jagah jawab deta hai jahan aap ke customers pehle se hain, wohi maloomat, wohi andaaz aur wohi yaad ke saath.",
+        omniAgent:"Aap ka aik agent",
+        omniAgentSub:"Aap ke business par aik dafa trained — neeche har channel par live.",
+        omniConnected:"Connected hai",
+        omniChPhone:"Phone calls", omniChWhatsapp:"WhatsApp", omniChInstagram:"Instagram", omniChTiktok:"TikTok", omniChWebsite:"Website chat", omniChFacebook:"Facebook", omniChEmail:"Email",
+        omniNote:"Aik dimagh, aik yaad: customer TikTok par baat shuru kare, WhatsApp par dobara pooche aur phone call par khatam kare — agent ko poori guftagu yaad rehti hai.",
+        omniCount:"7 channels · 1 agent · 0 missed messages",
         tplTitle:"Template se shuru karein",
         tplSub:"Paanch ready-made agents jin ki instructions pehle se likhi hui hain. Aik chunein, business details apni daalein, aur live ho jayein.",
         howTitle:"Teen steps mein live",
